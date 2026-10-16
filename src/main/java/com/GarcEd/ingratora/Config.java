@@ -1,4 +1,4 @@
-package com.GarcEd.ingratora;
+package com.garced.ingratora;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;

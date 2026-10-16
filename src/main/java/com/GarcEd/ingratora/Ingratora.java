@@ -1,4 +1,4 @@
-package com.GarcEd.ingratora;
+package com.garced.ingratora;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
