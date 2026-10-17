@@ -8,17 +8,35 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = Ingratora.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EventModExample {
-
+    static int i = 0;
+    
     @SubscribeEvent
     public static void onEntityJump(LivingEvent.LivingJumpEvent event) {
-        // Check if the entity jumping is a player
         if (event.getEntity() instanceof Player player) {
-            // Check that this is running on the server side
             if (!player.level().isClientSide()) {
-                // Sends the message directly to the player's in-game chat
-                player.sendSystemMessage(
-                    Component.literal(">>> SUCCESS: " + player.getName().getString() + " jumped! Event is working! <<<")
-                );
+                switch(i){
+                    case 0:
+                        player.sendSystemMessage(Component.literal("Кто"));
+                        break;
+                    case 1:
+                        player.sendSystemMessage(Component.literal("не"));
+                        break;
+                    case 2:
+                        player.sendSystemMessage(Component.literal("скачет"));
+                        break;
+                    case 3:
+                        player.sendSystemMessage(Component.literal("тот"));
+                        break;
+                    case 4:
+                        player.sendSystemMessage(Component.literal("лох"));
+                        break;
+                }
+                
+                if (i == 4) {
+                    i = 0;
+                } else {
+                    i++;
+                }
             }
         }
     }
