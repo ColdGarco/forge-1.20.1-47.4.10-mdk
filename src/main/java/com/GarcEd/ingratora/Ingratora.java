@@ -63,6 +63,7 @@ public class Ingratora
     public Ingratora(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
+        ManaNetwork.register();
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
