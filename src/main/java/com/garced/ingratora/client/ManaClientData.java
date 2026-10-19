@@ -1,4 +1,6 @@
-package com.garced.ingratora;
+package com.garced.ingratora.client;
+
+import com.garced.ingratora.global.Mana;
 
 public final class ManaClientData {
     private static int currentMana = Mana.MAX_MANA;

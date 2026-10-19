@@ -1,4 +1,6 @@
-package com.garced.ingratora;
+package com.garced.ingratora.spell;
+
+import com.garced.ingratora.Ingratora;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;

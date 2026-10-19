@@ -1,4 +1,4 @@
-package com.garced.ingratora;
+package com.garced.ingratora.spell;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.SmallFireball;

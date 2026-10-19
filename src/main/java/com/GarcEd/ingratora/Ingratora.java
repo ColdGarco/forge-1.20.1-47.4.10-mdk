@@ -1,5 +1,7 @@
 package com.garced.ingratora;
 
+import com.garced.ingratora.global.ManaNetwork;
+import com.garced.ingratora.spell.FireballScrollItem;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
