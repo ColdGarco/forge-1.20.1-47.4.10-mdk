@@ -1,4 +1,4 @@
-package com.garced.ingratora.spell;
+package com.garced.ingratora.common.spell;
 
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
@@ -13,6 +13,7 @@ import net.minecraft.world.entity.player.Player;
 
 import com.garced.ingratora.Ingratora;
 import com.garced.ingratora.global.Mana;
+import com.garced.ingratora.common.spell.projectile.ExplodingSmallFireball;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.phys.Vec3;

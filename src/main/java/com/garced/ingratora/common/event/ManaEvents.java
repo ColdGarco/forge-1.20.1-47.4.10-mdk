@@ -1,6 +1,7 @@
-package com.garced.ingratora.global;
+package com.garced.ingratora.common.event;
 
 import com.garced.ingratora.Ingratora;
+import com.garced.ingratora.global.Mana;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.TickEvent;

@@ -1,4 +1,4 @@
-package com.garced.ingratora.spell;
+package com.garced.ingratora.common.event;
 
 import com.garced.ingratora.Ingratora;
 

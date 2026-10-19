@@ -1,5 +1,8 @@
-package com.garced.ingratora.global;
+package com.garced.ingratora.network;
 
+import com.garced.ingratora.client.ManaClientData;
+import com.garced.ingratora.Ingratora;
+import com.garced.ingratora.global.Mana;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
@@ -8,9 +11,6 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 import java.util.function.Supplier;
-
-import com.garced.ingratora.Ingratora;
-import com.garced.ingratora.client.ManaClientData;
 
 public final class ManaNetwork {
     private static final String PROTOCOL_VERSION = "1";

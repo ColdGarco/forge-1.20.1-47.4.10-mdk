@@ -2,6 +2,7 @@ package com.garced.ingratora.global;
 
 import com.garced.ingratora.Ingratora;
 
+import com.garced.ingratora.network.ManaNetwork;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
