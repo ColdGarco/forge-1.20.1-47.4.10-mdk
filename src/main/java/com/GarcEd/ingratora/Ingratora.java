@@ -63,6 +63,7 @@ public class Ingratora
     public Ingratora(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
+        ManaNetwork.register();
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -76,6 +77,7 @@ public class Ingratora
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        FireballScrollItem.ITEMS.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
