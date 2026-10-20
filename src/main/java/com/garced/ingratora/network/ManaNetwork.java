@@ -1,5 +1,8 @@
-package com.garced.ingratora;
+package com.garced.ingratora.network;
 
+import com.garced.ingratora.client.ManaClientData;
+import com.garced.ingratora.Ingratora;
+import com.garced.ingratora.global.Mana;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
@@ -11,6 +14,7 @@ import java.util.function.Supplier;
 
 public final class ManaNetwork {
     private static final String PROTOCOL_VERSION = "1";
+    @SuppressWarnings("removal")
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
             new ResourceLocation(Ingratora.MODID, "main"),
             () -> PROTOCOL_VERSION,

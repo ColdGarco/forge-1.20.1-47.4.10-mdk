@@ -1,5 +1,8 @@
 package com.garced.ingratora;
 
+import com.garced.ingratora.common.spell.FireballScrollItem;
+import com.garced.ingratora.common.spell.LightBeamScrollItem;
+import com.garced.ingratora.network.ManaNetwork;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -78,6 +81,7 @@ public class Ingratora
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         FireballScrollItem.ITEMS.register(modEventBus);
+        LightBeamScrollItem.ITEMS.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
