@@ -1,8 +1,10 @@
 package com.garced.ingratora;
 
+import com.garced.ingratora.common.init.ModMenuTypes;
 import com.garced.ingratora.common.spell.FireballScrollItem;
 import com.garced.ingratora.common.spell.LightBeamScrollItem;
 import com.garced.ingratora.network.ManaNetwork;
+import com.garced.ingratora.network.ModMessages;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -67,7 +69,8 @@ public class Ingratora
     {
         IEventBus modEventBus = context.getModEventBus();
         ManaNetwork.register();
-
+        ModMenuTypes.register(modEventBus);
+        ModMessages.register();
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -130,4 +133,5 @@ public class Ingratora
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
     }
+    
 }
