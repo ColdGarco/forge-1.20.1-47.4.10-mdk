@@ -2,7 +2,7 @@ package com.garced.ingratora.global;
 
 import com.garced.ingratora.Ingratora;
 
-import com.garced.ingratora.network.ManaNetwork;
+import com.garced.ingratora.network.ModNetworking;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
@@ -46,7 +46,7 @@ public final class Mana {
     }
 
     public static void sync(ServerPlayer player) {
-        ManaNetwork.sendToPlayer(player, getCurrentMana(player));
+        ModNetworking.sendMana(player, getCurrentMana(player));
     }
 
     public static void initialize(Player player) {

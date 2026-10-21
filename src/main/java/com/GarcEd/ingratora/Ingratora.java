@@ -2,7 +2,7 @@ package com.garced.ingratora;
 
 import com.garced.ingratora.common.spell.FireballScrollItem;
 import com.garced.ingratora.common.spell.LightBeamScrollItem;
-import com.garced.ingratora.network.ManaNetwork;
+import com.garced.ingratora.network.ModNetworking;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -66,7 +66,7 @@ public class Ingratora
     public Ingratora(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
-        ManaNetwork.register();
+        ModNetworking.register();
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

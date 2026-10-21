@@ -36,7 +36,7 @@ public class ManaOverlayGUI {
     ) {
         int currentMana = ManaClientData.getCurrentMana();
         int iconCount = (Mana.MAX_MANA + 9) / 10;
-        int x = screenWidth / 2 - 91;
+        int x = screenWidth / 2 + 10;
         int y = screenHeight - 50;
 
         for (int i = 0; i < iconCount; i++) {

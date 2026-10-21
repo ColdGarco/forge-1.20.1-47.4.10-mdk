@@ -34,7 +34,7 @@ public class EventModExample {
                         break;
                 }
                 
-                if (i == 4) {
+                if (i == 24) {
                     i = 0;
                 } else {
                     i++;
