@@ -14,14 +14,15 @@ import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 import java.util.function.Supplier;
+import java.util.function.IntSupplier;
 
 public final class CharacterClassPackets {
     private CharacterClassPackets() {
     }
 
-    static void register(SimpleChannel channel, int firstPacketId) {
+    static void register(SimpleChannel channel, IntSupplier nextPacketId) {
         channel.registerMessage(
-                firstPacketId,
+                nextPacketId.getAsInt(),
                 OpenSelectionS2C.class,
                 (packet, buffer) -> {
                 },
@@ -29,14 +30,14 @@ public final class CharacterClassPackets {
                 OpenSelectionS2C::handle
         );
         channel.registerMessage(
-                firstPacketId + 1,
+                nextPacketId.getAsInt(),
                 SelectClassC2S.class,
                 (packet, buffer) -> buffer.writeUtf(packet.classId),
                 buffer -> new SelectClassC2S(buffer.readUtf(32)),
                 SelectClassC2S::handle
         );
         channel.registerMessage(
-                firstPacketId + 2,
+                nextPacketId.getAsInt(),
                 CharacterClassSyncS2C.class,
                 (packet, buffer) -> buffer.writeUtf(packet.classId),
                 buffer -> new CharacterClassSyncS2C(buffer.readUtf(32)),

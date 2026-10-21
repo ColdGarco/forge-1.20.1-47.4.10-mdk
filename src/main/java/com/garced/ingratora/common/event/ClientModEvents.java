@@ -32,7 +32,7 @@ public class ClientModEvents {
     public static void onClientSetup(FMLClientSetupEvent event) {
     event.enqueueWork(() -> {
         net.minecraft.client.gui.screens.MenuScreens.register(
-            com.garced.ingratora.common.init.ModMenuTypes.INVENTORY_MENU.get(), 
+            com.garced.ingratora.common.init.MenuTypeReg.INVENTORY_MENU.get(), 
             com.garced.ingratora.client.hud.InventoryScreen::new
         );
     });

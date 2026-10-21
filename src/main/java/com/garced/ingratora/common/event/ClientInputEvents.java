@@ -1,7 +1,7 @@
 package com.garced.ingratora.common.event;
 
 import com.garced.ingratora.Ingratora;
-import com.garced.ingratora.network.ModMessages;
+import com.garced.ingratora.network.ModNetworking;
 import com.garced.ingratora.network.OpenInventoryPacket;
 import com.garced.ingratora.common.event.ClientModEvents; // Импортируйте ваш класс, где лежит кнопка
 import net.minecraft.client.Minecraft;
@@ -22,7 +22,7 @@ public class ClientInputEvents {
             if (ClientModEvents.INVENTORY_KEY.consumeClick() && Minecraft.getInstance().screen == null) {
                 
                 // Мгновенно отправляем сетевой пакет на сервер с запросом на открытие
-                ModMessages.sendToServer(new OpenInventoryPacket());
+                ModNetworking.sendOpenInventory();
             }
         }
     }

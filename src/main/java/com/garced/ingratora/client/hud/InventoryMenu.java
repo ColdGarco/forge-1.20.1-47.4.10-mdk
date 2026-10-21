@@ -19,7 +19,7 @@ public class InventoryMenu extends AbstractContainerMenu {
 
     // Основной конструктор
     public InventoryMenu(int containerId, Inventory playerInventory) {
-        super(com.garced.ingratora.common.init.ModMenuTypes.INVENTORY_MENU.get(), containerId);
+        super(com.garced.ingratora.common.init.MenuTypeReg.INVENTORY_MENU.get(), containerId);
         this.playerInventory = playerInventory;
 
         // Первичная инициализация на сервере

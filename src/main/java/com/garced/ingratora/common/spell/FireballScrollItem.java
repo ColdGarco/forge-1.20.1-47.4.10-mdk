@@ -2,6 +2,7 @@ package com.garced.ingratora.common.spell;
 
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import com.garced.ingratora.common.init.ItemReg;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,11 +18,6 @@ import com.garced.ingratora.common.spell.projectile.ExplodingSmallFireball;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-
-
 
 @Mod.EventBusSubscriber(modid = Ingratora.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class FireballScrollItem extends Item {
@@ -56,15 +52,11 @@ public class FireballScrollItem extends Item {
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
     }
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Ingratora.MODID);
-
-    public static final RegistryObject<Item> FIRE_BALL_SCROLL = ITEMS.register("fireball_scroll", 
-            () -> new FireballScrollItem(new Item.Properties()));
 
     @SubscribeEvent
     public static void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-            event.accept(FIRE_BALL_SCROLL.get());
+            event.accept(ItemReg.FIRE_BALL_SCROLL.get());
         }
     }
 }

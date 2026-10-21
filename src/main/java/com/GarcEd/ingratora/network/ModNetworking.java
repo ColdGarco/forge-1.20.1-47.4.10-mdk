@@ -10,22 +10,27 @@ import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class ModNetworking {
     private static final String PROTOCOL_VERSION = "1";
+    static int packetID = 0;
+    public static int nextID(){
+        return packetID++;
+    }
 
     @SuppressWarnings("removal")
-    static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(Ingratora.MODID, "main"),
-            () -> PROTOCOL_VERSION,
-            PROTOCOL_VERSION::equals,
-            PROTOCOL_VERSION::equals
-    );
+    static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder
+                .named(new ResourceLocation(Ingratora.MODID, "messages"))
+                .networkProtocolVersion(() -> "1.0")
+                .clientAcceptedVersions(s -> true)
+                .serverAcceptedVersions(s -> true)
+                .simpleChannel();
 
     private ModNetworking() {
     }
 
     public static void register() {
-        ManaSyncPacket.register(CHANNEL, 0);
-        CharacterClassPackets.register(CHANNEL, 1);
-        RageSyncPacket.register(CHANNEL, 4);
+        ManaSyncPacket.register(CHANNEL, nextID());
+        CharacterClassPackets.register(CHANNEL, ModNetworking::nextID);
+        RageSyncPacket.register(CHANNEL, nextID());
+        OpenInventoryPacket.register(CHANNEL, nextID());
     }
 
     public static void sendMana(ServerPlayer player, int currentMana, int maxMana) {
@@ -53,6 +58,10 @@ public final class ModNetworking {
         CHANNEL.sendToServer(
                 new CharacterClassPackets.SelectClassC2S(characterClass.getId())
         );
+    }
+
+    public static void sendOpenInventory() {
+        CHANNEL.sendToServer(new OpenInventoryPacket());
     }
 
     public static void syncCharacterClass(ServerPlayer player, CharacterClass characterClass) {

@@ -27,10 +27,14 @@ public final class CharacterProfileEvents {
     // 
     @SubscribeEvent // Привязываем скрытый контейнер к игроку при его создании
     public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
-    if (event.getObject() instanceof Player) {
-        // Привязываем скрытый контейнер к игроку под именем вашего мода
-        event.addCapability(new ResourceLocation(Ingratora.MODID, "accessories"), new CharacterAccessoriesProvider());
+        if (event.getObject() instanceof Player) {
+            event.addCapability(
+                    new ResourceLocation(Ingratora.MODID, "accessories"),
+                    new CharacterAccessoriesProvider()
+            );
+        }
     }
+
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
@@ -43,6 +47,5 @@ public final class CharacterProfileEvents {
         }
     }
 }
-
 
 

@@ -22,10 +22,6 @@ public final class Mana {
         initialize(player);
         return player.getPersistentData().getInt(MANA_TAG);
     }
-    // Установка текущей маны игрока. Возвращает true, если установка прошла успешно, иначе false.
-     private static void setCurrentMana(Player player, int mana) {
-        int boundedMana = Math.max(0, Math.min(MAX_MANA, mana));
-        player.getPersistentData().putInt(MANA_TAG, boundedMana);
 
     public static boolean canUseMana(Player player) {
         return CharacterProfile.get(player).getCharacterClass().canUseMana();
@@ -102,9 +98,8 @@ public final class Mana {
         int mana = getCurrentMana(original);
         replacement.getPersistentData().putInt(MANA_TAG, mana);
     }
-    // Установка текущей маны игрока. Вызывается на сервере.
-   
 
+    // Установка текущей маны игрока. Вызывается на сервере.
     private static void setCurrentMana(Player player, int mana) {
         CharacterClass characterClass = CharacterProfile.get(player).getCharacterClass();
         int boundedMana = characterClass.canUseMana()

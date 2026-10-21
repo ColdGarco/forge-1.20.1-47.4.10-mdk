@@ -1,6 +1,5 @@
 package com.garced.ingratora.network;
 
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.SimpleMenuProvider;
@@ -12,16 +11,18 @@ public class OpenInventoryPacket {
     // Конструктор должен быть пустым
     public OpenInventoryPacket() {}
 
-    // Forge требует, чтобы мы записали что-то в буфер, даже если пакет пустой
-    public static void encode(OpenInventoryPacket msg, FriendlyByteBuf buffer) {
-        buffer.writeBoolean(true); // Пишем заглушку
-    }
-
-    // Читаем заглушку обратно
-    public static OpenInventoryPacket decode(FriendlyByteBuf buffer) {
-        buffer.readBoolean(); 
-        return new OpenInventoryPacket();
-    }
+    public static void register(net.minecraftforge.network.simple.SimpleChannel channel, int packetId) {
+    channel.registerMessage(
+            packetId,
+            OpenInventoryPacket.class,
+            (packet, buffer) -> buffer.writeBoolean(true), // Наш encode-заглушка
+            buffer -> {
+                buffer.readBoolean(); // Наш decode-заглушка
+                return new OpenInventoryPacket();
+            },
+            OpenInventoryPacket::handle // Наш обработчик
+    );
+}
 
     public static void handle(OpenInventoryPacket msg, Supplier<NetworkEvent.Context> ctxSupplier) {
         NetworkEvent.Context context = ctxSupplier.get();
