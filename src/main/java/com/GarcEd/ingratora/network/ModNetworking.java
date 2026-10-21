@@ -27,10 +27,10 @@ public final class ModNetworking {
         CharacterClassPackets.register(CHANNEL, 1);
     }
 
-    public static void sendMana(ServerPlayer player, int currentMana) {
+    public static void sendMana(ServerPlayer player, int currentMana, int maxMana) {
         CHANNEL.send(
                 PacketDistributor.PLAYER.with(() -> player),
-                new ManaSyncPacket(currentMana)
+                new ManaSyncPacket(currentMana, maxMana)
         );
     }
 

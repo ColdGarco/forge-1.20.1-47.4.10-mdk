@@ -51,7 +51,7 @@ public class FireballScrollItem extends Item {
             if (level.addFreshEntity(fireball)) {
                 player.getCooldowns().addCooldown(this, 20);
             } else {
-                Mana.regenerate(player, MANA_COST);
+                Mana.restore(player, MANA_COST);
             }
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);

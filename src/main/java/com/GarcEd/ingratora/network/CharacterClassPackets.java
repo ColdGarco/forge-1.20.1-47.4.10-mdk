@@ -4,6 +4,7 @@ import com.garced.ingratora.client.CharacterProfileClientData;
 import com.garced.ingratora.client.screen.ClassSelectionScreen;
 import com.garced.ingratora.common.player.CharacterClass;
 import com.garced.ingratora.common.player.CharacterProfile;
+import com.garced.ingratora.global.Mana;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -71,6 +72,7 @@ public final class CharacterClassPackets {
                     CharacterProfile profile = CharacterProfile.get(player);
                     CharacterClass selectedClass = CharacterClass.getCharacterClass(packet.classId);
                     if (profile.chooseClass(selectedClass)) {
+                        Mana.onClassChosen(player);
                         ModNetworking.syncCharacterClass(player, selectedClass);
                     } else if (profile.hasChosenClass()) {
                         ModNetworking.syncCharacterClass(player, profile.getCharacterClass());

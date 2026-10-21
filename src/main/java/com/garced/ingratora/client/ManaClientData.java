@@ -1,9 +1,10 @@
 package com.garced.ingratora.client;
 
-import com.garced.ingratora.global.Mana;
+import com.garced.ingratora.common.player.CharacterClass;
 
 public final class ManaClientData {
-    private static int currentMana = Mana.MAX_MANA;
+    private static int currentMana;
+    private static int maxMana;
 
     private ManaClientData() {
     }
@@ -12,7 +13,12 @@ public final class ManaClientData {
         return currentMana;
     }
 
-    public static void setCurrentMana(int mana) {
-        currentMana = Math.max(0, Math.min(Mana.MAX_MANA, mana));
+    public static int getMaxMana() {
+        return maxMana;
+    }
+
+    public static void setMana(int mana, int maximum) {
+        maxMana = Math.max(0, maximum);
+        currentMana = Math.max(0, Math.min(maxMana, mana));
     }
 }
