@@ -1,7 +1,4 @@
 package com.garced.ingratora.client;
-
-import com.garced.ingratora.common.player.CharacterClass;
-
 public final class ManaClientData {
     private static int currentMana;
     private static int maxMana;

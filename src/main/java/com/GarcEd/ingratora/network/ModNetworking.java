@@ -25,6 +25,7 @@ public final class ModNetworking {
     public static void register() {
         ManaSyncPacket.register(CHANNEL, 0);
         CharacterClassPackets.register(CHANNEL, 1);
+        RageSyncPacket.register(CHANNEL, 4);
     }
 
     public static void sendMana(ServerPlayer player, int currentMana, int maxMana) {
@@ -33,6 +34,13 @@ public final class ModNetworking {
                 new ManaSyncPacket(currentMana, maxMana)
         );
     }
+
+    public static void sendRage(ServerPlayer player, int currentRage, int maxRage) {
+        CHANNEL.send(
+                PacketDistributor.PLAYER.with(() -> player),
+                new RageSyncPacket(currentRage, maxRage)
+        );
+    }    
 
     public static void openClassSelection(ServerPlayer player) {
         CHANNEL.send(

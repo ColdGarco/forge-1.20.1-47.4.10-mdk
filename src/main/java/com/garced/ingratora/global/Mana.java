@@ -41,7 +41,7 @@ public final class Mana {
 
         return restore(player, amount);
     }
-
+    
     public static boolean restore(Player player, int amount) {
         CharacterClass characterClass = CharacterProfile.get(player).getCharacterClass();
         if (amount <= 0 || !characterClass.canUseMana()) {
