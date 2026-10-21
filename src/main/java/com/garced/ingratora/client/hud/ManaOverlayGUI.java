@@ -1,8 +1,9 @@
 package com.garced.ingratora.client.hud;
 
 import com.garced.ingratora.Ingratora;
+import com.garced.ingratora.client.CharacterProfileClientData;
 import com.garced.ingratora.client.ManaClientData;
-import com.garced.ingratora.global.Mana;
+import com.garced.ingratora.common.player.CharacterClass;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraftforge.api.distmarker.Dist;
@@ -34,9 +35,15 @@ public class ManaOverlayGUI {
             int screenWidth,
             int screenHeight
     ) {
+        CharacterClass characterClass = CharacterProfileClientData.getCharacterClass();
+        if (!characterClass.canUseMana()) {
+            return;
+        }
+
         int currentMana = ManaClientData.getCurrentMana();
-        int iconCount = (Mana.MAX_MANA + 9) / 10;
-        int x = screenWidth / 2 - 91;
+        int maxMana = ManaClientData.getMaxMana();
+        int iconCount = (maxMana + 9) / 10;
+        int x = screenWidth / 2 + 10;
         int y = screenHeight - 50;
 
         for (int i = 0; i < iconCount; i++) {

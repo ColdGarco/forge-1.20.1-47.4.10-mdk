@@ -1,6 +1,7 @@
 package com.garced.ingratora.common.event;
 
 import com.garced.ingratora.Ingratora;
+import com.garced.ingratora.common.player.CharacterProfile;
 import com.garced.ingratora.global.Mana;
 
 import net.minecraft.server.level.ServerPlayer;
@@ -39,9 +40,13 @@ public final class ManaEvents {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase == TickEvent.Phase.END
                 && event.player instanceof ServerPlayer player
-                && !player.isRemoved()
-                && player.tickCount % Mana.REGEN_INTERVAL_TICKS == 0) {
-            Mana.regenerate(player, Mana.REGEN_AMOUNT);
+                && !player.isRemoved()) {
+            int regenInterval = CharacterProfile.get(player)
+                    .getCharacterClass()
+                    .getManaRegenerationIntervalTicks();
+            if (regenInterval > 0 && player.tickCount % regenInterval == 0) {
+                Mana.regenerate(player);
+            }
         }
     }
 }
