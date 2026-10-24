@@ -5,10 +5,13 @@ import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraft.client.Minecraft;
+import com.garced.ingratora.client.renderer.AnimationDummyRenderer;
+import com.garced.ingratora.common.init.EntityReg;
 import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(modid = Ingratora.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -25,6 +28,11 @@ public class ClientModEvents {
     @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {
         event.register(INVENTORY_KEY);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(EntityReg.ANIMATION_DUMMY.get(), AnimationDummyRenderer::new);
     }
 
     // 3. Ваш существующий метод настройки клиента

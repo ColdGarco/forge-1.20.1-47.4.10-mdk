@@ -1,6 +1,7 @@
 package com.garced.ingratora;
 
 import com.garced.ingratora.common.init.MenuTypeReg;
+import com.garced.ingratora.common.init.EntityReg;
 import com.garced.ingratora.network.ModNetworking;
 import com.garced.ingratora.common.init.ItemReg;
 import com.mojang.logging.LogUtils;
@@ -46,6 +47,7 @@ public class Ingratora
     {
         IEventBus modEventBus = context.getModEventBus();
         MenuTypeReg.register(modEventBus);
+        EntityReg.register(modEventBus);
         ModNetworking.register();
         ItemReg.register(modEventBus);
         BLOCKS.register(modEventBus);
